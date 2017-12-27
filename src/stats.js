@@ -1,4 +1,10 @@
 /**
+ * Represents HTTP unauthorized status code.
+ * @type {number}
+ */
+const HTTP_UNAUTHORIZED = 401;
+
+/**
  * Request stats and passes results to handler function.
  */
 function requestStats() {
@@ -12,7 +18,15 @@ function requestStats() {
   });
 
   fetch(request)
-    .then(response => response.text())
+    .then(response => {
+      if (response.status === HTTP_UNAUTHORIZED) {
+        chrome.tabs.create({
+          url: 'https://medium.com/m/signin'
+        });
+      }
+
+      return response.text();
+    })
     .then(parseResponse);
 }
 
@@ -26,8 +40,20 @@ function parseResponse(text) {
   const articles = json.payload.value;
 
   if (articles.length === 0) {
+    document.getElementById('header').innerHTML = `<tr>
+      <th>Article stats not available.</th>
+    </tr>`;
     return;
   }
+
+  document.getElementById('header').innerHTML = `
+    <tr>
+      <th></th>
+      <th>Views</th>
+      <th>Reads</th>
+      <th>Ratio</th>
+    </tr>
+  `;
 
   for (let article of articles) {
     createRow(article.title, article.views, article.reads);
