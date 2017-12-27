@@ -72,22 +72,11 @@ function createRow(title, views, reads) {
     <td>${title}</td>
     <td>${views}</td>
     <td>${reads}</td>
-    <td>${round(reads * 100 / views, 2)}%</td>
+    <td>${Math.round(reads * 100 / views)}%</td>
   `;
 
   const stats = document.createElement('tr');
 
   stats.innerHTML = template;
   document.getElementById('stats').appendChild(stats);
-}
-
-/**
- * Rounds number to given decimal places.
- *
- * @param {number} number
- * @param {number} decimals
- * @return {number}
- */
-function round(number, decimals) {
-  return Number(Math.round(number + 'e' + decimals) + 'e-' + decimals);
 }
