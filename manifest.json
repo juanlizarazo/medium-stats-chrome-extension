@@ -2,8 +2,10 @@
   "manifest_version": 2,
 
   "name": "Medium stats",
+  "default_locale": "en",
   "description": "",
-  "version": "1.0",
+  "version": "0.1.0",
+  "author": "Juan Lizarazo",
 
   "browser_action": {
     "default_icon": "./assets/icon-32x32.png",
