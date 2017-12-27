@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "Medium stats",
-    "description": "Medium article stats"
+    "message": "My article stats for Medium.com",
+    "description": "My article stats for Medium.com"
   },
   "appDesc": {
-    "message": "Displays Medium.com article stats.",
-    "description":"Displays Medium.com article stats."
+    "message": "Displays my Medium.com article stats for your published articles.",
+    "description":"Displays my Medium.com article stats."
   }
 }
