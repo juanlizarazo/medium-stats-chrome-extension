@@ -1,6 +1,7 @@
-request();
-
-function request() {
+/**
+ * Request stats and passes results to handler function.
+ */
+function requestStats() {
   const request = new Request('https://medium.com/me/stats?filter=not-response', {
     method: 'GET',
     headers: new Headers({
@@ -11,20 +12,35 @@ function request() {
   });
 
   fetch(request)
-    .then(response => {
-      return response.text();
-    })
-    .then(text => {
-      const json = JSON.parse(text.replace('])}while(1);</x>', ''));
-      const articles = json.payload.value;
-      if (articles.length > 0) {
-        for (let article of articles) {
-          createRow(article.title, article.views, article.reads);
-        }
-      }
-    });
+    .then(response => response.text())
+    .then(parseResponse);
 }
 
+/**
+ * Parses response and appends stats to DOM.
+ *
+ * @param {string} text
+ */
+function parseResponse(text) {
+  const json = JSON.parse(text.replace('])}while(1);</x>', ''));
+  const articles = json.payload.value;
+
+  if (articles.length === 0) {
+    return;
+  }
+
+  for (let article of articles) {
+    createRow(article.title, article.views, article.reads);
+  }
+}
+
+/**
+ * Creates and appends to DOM stat row.
+ *
+ * @param {string} title
+ * @param {number} views
+ * @param {number} reads
+ */
 function createRow(title, views, reads) {
   const template = `
     <td>${title}</td>
@@ -39,6 +55,13 @@ function createRow(title, views, reads) {
   document.getElementById('stats').appendChild(stats);
 }
 
-function round(value, decimals) {
-  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+/**
+ * Rounds number to given decimal places.
+ *
+ * @param {number} number
+ * @param {number} decimals
+ * @return {number}
+ */
+function round(number, decimals) {
+  return Number(Math.round(number + 'e' + decimals) + 'e-' + decimals);
 }
