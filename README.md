@@ -4,7 +4,9 @@ Extension that shows your article read stats on Medium.
 
 ## Getting Started
 
-Install from the chrome web store [here]().
+Install from the chrome web store [here](https://chrome.google.com/webstore/detail/my-article-stats-for-medi/mpnlgdbchnlhjlfdhffnbffeooljmejh?hl=en).
+
+![Preview](/assets/screenshot.png?raw=true "Preview")
 
 ## Usage
 
@@ -23,9 +25,3 @@ If there's no articles, a message saying so is shown.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
