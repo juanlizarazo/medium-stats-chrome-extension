@@ -14,7 +14,7 @@ The extension displays the medium article stats in a popup.
 
 It requires you to be logged in Medium.com but you can use the extension from any tab.
 
-When you aren't logged in, you will be taken to the Medium logged in page.
+When you aren't logged in, you will be taken to the Medium log in page.
 
 If there's no articles, a message saying so is shown.
 
